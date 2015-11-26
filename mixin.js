@@ -1,13 +1,13 @@
 var assign = require('object-assign')
 
-module.exports = assign(basicEventuateMixin, {
+module.exports = assign(init, {
   produce       : produce,
   consume       : consume,
   hasConsumer   : hasConsumer,
   removeConsumer: removeConsumer
 })
 
-function basicEventuateMixin () {
+function init () {
   this._consumers = []
   return this
 }
@@ -19,12 +19,11 @@ function produce (data) {
 }
 
 function consume (consumer) {
-  var self = this
-
   if (typeof consumer !== 'function')
     throw new TypeError('eventuate consumer must be a function')
-  this._consumers.push(consumer)
 
+  var self = this
+  this._consumers.push(consumer)
   return {
     end: function end () {
       return self.removeConsumer(consumer)
