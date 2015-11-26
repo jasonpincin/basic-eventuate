@@ -88,17 +88,16 @@ Object.assign(myObject, basicEventuateMixin)
 basicEventuateMixin.call(myObject)
 ```
 
-Another example using prototypes and constructors:
+## constructor
+
+Alternatively, the constructor may be required and used for extending or
+creating new eventuate objects. Be warned, that `new BasicEventuate` will return
+a non-function object, meaning the `event(consumer)` shortcut will not work.
+The long-form `event.consume(consumer)` will need to be required.
 
 ```javascript
-var basicEventuateMixin = require('basic-eventuate/mixin')
-
-function Thing () {
-  basicEventuateMixin.call(this)
-}
-Object.assign(Thing.prototype, basicEventuateMixin)
-
-var event = new Thing()
+const BasicEventuate = require('basic-eventuate/constructor')
+var event = new BasicEventuate
 ```
 
 ## install
