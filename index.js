@@ -4,8 +4,9 @@ var assign = require('object-assign'),
 module.exports = createBasicEventuate
 
 function createBasicEventuate () {
-  basicEventuate.factory = createBasicEventuate
-  return mixin.call(assign(basicEventuate, mixin))
+  return mixin.call(assign(basicEventuate, mixin.properties, {
+    factory: createBasicEventuate
+  }))
 
   function basicEventuate (consumer) {
     return basicEventuate.consume(consumer)

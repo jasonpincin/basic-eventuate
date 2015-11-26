@@ -1,16 +1,14 @@
 var assign = require('object-assign')
 
-module.exports = assign(init, {
+module.exports = assign(function basicEventuate () {
+  this._consumers = []
+  return this
+}, { properties: {
   produce       : produce,
   consume       : consume,
   hasConsumer   : hasConsumer,
   removeConsumer: removeConsumer
-})
-
-function init () {
-  this._consumers = []
-  return this
-}
+}})
 
 function produce (data) {
   for (var i = 0; i < this._consumers.length; i++) {

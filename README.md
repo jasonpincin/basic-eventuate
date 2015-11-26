@@ -76,7 +76,7 @@ otherwise it returns `false`.
 
 The basic eventuate mixin may be used to add basic eventuate functionality to
 another object. You should first assign the mixin's properties, then call the
-mixin in the context of your object.
+mixin in the context of your object to initialize it.
 
 For example:
 
@@ -84,7 +84,7 @@ For example:
 var basicEventuateMixin = require('basic-eventuate/mixin')
 
 var myObject = {}
-Object.assign(myObject, basicEventuateMixin)
+Object.assign(myObject, basicEventuateMixin.properties)
 basicEventuateMixin.call(myObject)
 ```
 
